@@ -1,0 +1,19 @@
+{
+    "name": "ritch/ami-monitor",
+    "authors": [
+        {
+            "name": "Ritchelly",
+            "email": "ritch.sa@hotmail.com"
+        }
+    ],
+    "keywords": ["ami", "manager", "asteriski", "php-ami"],
+    "minimum-stability": "beta",
+    "require": {
+        "wisembly/elephant.io": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    }
+}

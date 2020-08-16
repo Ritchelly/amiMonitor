@@ -1,0 +1,11 @@
+[AsteriskManager]
+host = localhost
+username = manager_username
+secret = manager_secret
+port = 5038
+
+[WebSocket] 
+enabled = true
+protocol = http
+host = localhost
+port = 3001
