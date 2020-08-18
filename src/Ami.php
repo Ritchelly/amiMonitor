@@ -11,13 +11,6 @@ class Ami{
 	function __construct()	{
 		$config = new Config();
 
-	/* 	$this->socket = @fsockopen(
-			$config->getManagerConfigHost(),
-			$config->getManagerport(),
-			$errno, $errstr,
-			1
-		); */
-
 		try {
 			$this->socket = @fsockopen(
 				$config->getManagerConfigHost(),
@@ -42,7 +35,6 @@ class Ami{
 	}
 
 	function sendAction( Array $command = [], Array $eventsFilter =[] ) {
-
 
 		$line                = '';
 		$block               = [];
