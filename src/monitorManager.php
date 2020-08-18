@@ -11,7 +11,7 @@ $ami = new Ami();
 
 $event = [
 	'All',
-	'AgentLogin',
+	/* 'AgentLogin',
 	'AgentLogoff',
 	'AgentComplete',
 	'DeviceStateChange',
@@ -26,7 +26,8 @@ $event = [
 	'BridgeEnter',
 	'AgentConnect',
 	'SoftHangupRequest',
-	'Registry'
+	'Registry',
+	'QueueMember' */
 ];
 
 do {
@@ -83,7 +84,7 @@ do {
 
 		default:
 			$amiEvent = $ami->getEvent($event);
-			$webSocket->emit( "manager", [ $amiEvent ] );
+			$webSocket->emit( "ami", [ $amiEvent ] );
 			print_r($amiEvent);
 		break;
 	}

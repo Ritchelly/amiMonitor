@@ -11,30 +11,47 @@ class Ami{
 	function __construct()	{
 		$config = new Config();
 
-		$this->socket = @fsockopen(
+	/* 	$this->socket = @fsockopen(
 			$config->getManagerConfigHost(),
 			$config->getManagerport(),
 			$errno, $errstr,
 			1
-		);
+		); */
 
-		if( ( $errno != 0 ) || ( $errstr != "" ) ) {
-			echo  'Erro codigo : '.$errno ."\n". $errstr ;
-			return '0';
+		try {
+			$this->socket = @fsockopen(
+				$config->getManagerConfigHost(),
+				$config->getManagerport(),
+				$errno, $errstr,
+				1
+			);
+		
 		}
-		else {
-
-			$username = $config->getManagerUsername();
-			$secret   = $config->getManagerSecret();
-
-			fputs($this->socket, "Action: Login\r\n");
-			fputs($this->socket, "UserName: $username\r\n");
-			fputs($this->socket, "Secret: $secret\r\n\r\n");
-			return '1';
+		catch(\Exception $ex) {
+			echo "Falha ao conectar ao AMI";
+			echo $ex;
 		}
+
+		$username = $config->getManagerUsername();
+		$secret   = $config->getManagerSecret();
+
+		fputs($this->socket, "Action: Login\r\n");
+		fputs($this->socket, "UserName: $username\r\n");
+		fputs($this->socket, "Secret: $secret\r\n\r\n");
+		return '1';
 	}
 
-	function sendAction( $command = array() ) {
+	function sendAction( Array $command = [], Array $eventsFilter =[] ) {
+
+
+		$line                = '';
+		$block               = [];
+		$event_separator     = false;
+		$filter              = [];
+
+		$ami_key_parent   = '';
+		$ami_value_parent = '';
+		$block_count      = 0;
 
 		$i=1;
 		foreach ($command as $key => $value){
@@ -44,19 +61,6 @@ class Ami{
 		}
 
 		fputs($this->socket, "Action: Logoff\r\n\r\n");
-	}
-
-	//Captura os evendos de uma action;
-	function getResult( $events_filter = array() ) {
-
-		$line                = '';
-		$block               = '';
-		$event_separator     = false;
-		$filter              = '';
-
-		$ami_key_parent   = '';
-		$ami_value_parent = '';
-		$block_count      = 0;
 
 		while( ! @feof( $this->socket ) ) {
 
@@ -65,18 +69,18 @@ class Ami{
 
 			//Fim de Linha
 			if ("\n" == $read) {
-			   //echo $line.'<br>';
+			 //  echo $line;
 
 				$complete_line  = explode( ': ', $line ); // Espaço obrigatorio depois dos ":"
 				$ami_key_data   = @trim( $complete_line[0] );
 				$ami_value_data = @trim( $complete_line[1] );
 
-				if ( $event_separator ) {
+			 	if ( $event_separator ) {
 					$ami_key_parent   = $ami_key_data;
 					$ami_value_parent = $ami_value_data;
-				}
+				} 
 
-				if ( !empty( $events_filter ) && in_array( $ami_value_parent, $events_filter ) ) {
+				if ( !empty( $eventsFilter ) && ( in_array( $ami_value_parent, $eventsFilter ) || in_array( "All", $eventsFilter ) ) ) {
 					if ( "\r\n" != $line ) {
 						if ( $ami_key_data == "ChanVariable" || $ami_key_data == 'DestChanVariable' ) {
 							$this->processChanVariables( $ami_key_data, $ami_value_data );
@@ -86,20 +90,20 @@ class Ami{
 					}
 				}
 
-				$event_separator = false;
+			 	$event_separator = false;
 				//Fim de Bloco
 				if ( "\r\n" == $line ) {
 					$event_separator = true;
 					$block_count++; //Conta Quantidade de blocos já verificados
 				}
 				else {
-					$block[$block_count][$ami_key_data] = trim( $ami_value_data );
+					$block[ $block_count ][ $ami_key_data ] = trim( $ami_value_data );
 				}
-				$line='';
+				$line=''; 
 			}
 		}
 
-		if ( $events_filter && is_array( $filter ) ) {
+		if ( $eventsFilter && is_array( $filter ) ) {
 			$reindex_array_values = array_values( $filter ); //reindexa as chaves dos arrays para facilitar utilização e estetica
 		}
 		else if( is_array( $block ) ) {
