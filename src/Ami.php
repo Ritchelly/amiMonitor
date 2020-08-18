@@ -34,7 +34,7 @@ class Ami{
 		return '1';
 	}
 
-	function sendAction( Array $command = [], Array $eventsFilter =[] ) {
+	function sendAction( Array $command = [], Array $eventsFilter = [] ) {
 
 		$line                = '';
 		$block               = [];
