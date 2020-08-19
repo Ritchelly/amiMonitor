@@ -143,10 +143,7 @@ class Ami{
 					$block_count++; //Conta Quantidade de blocos já verificado;
 
 					if ( in_array( $this->ami_value_parent, $events_filter ) || in_array( 'All', $events_filter ) ) {
-						$reindex_array_values = array_values( $filter );
-						$object               = (object) $reindex_array_values[0];
-
-						return $object;
+						return array_values( $filter )[0];
 					}
 				}
 				$line='';
