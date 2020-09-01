@@ -12,7 +12,7 @@ class Ami{
 		$config = new Config();
 
 		try {
-			$this->socket = @fsockopen(
+			$this->socket = fsockopen(
 				$config->getManagerConfigHost(),
 				$config->getManagerport(),
 				$errno, $errstr,
@@ -20,9 +20,15 @@ class Ami{
 			);
 		
 		}
-		catch(\Exception $ex) {
+		catch (\Exception $ex) {
 			echo "Falha ao conectar ao AMI";
 			echo $ex;
+		}
+
+		if ( $errstr ) {
+			echo $errno.PHP_EOL;
+			echo $errstr.PHP_EOL;
+			exit();
 		}
 
 		$username = $config->getManagerUsername();
