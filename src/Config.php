@@ -9,7 +9,7 @@ class Config {
 
 	function __construct(){
 
-		$config = parse_ini_file("../config.ini", true);
+		$config = parse_ini_file( dirname( __DIR__, 4 ) ."/config.ini", true);
 		$this->asteriskManager =  $config['AsteriskManager'];
 		$this->websocketConfig =  $config['WebSocket'];
 	}

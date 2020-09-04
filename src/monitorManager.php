@@ -2,7 +2,7 @@
 
 namespace App;
 
-include('../vendor/autoload.php');
+include dirname( __DIR__, 3 ). '/autoload.php';
 
 set_time_limit(0);
 
