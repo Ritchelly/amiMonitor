@@ -6,5 +6,5 @@ write the way to use later. But if you only read this code, mainly `monitorManag
 
 # Configuration
 
-1) Copy the config.ini.sample to config.ini and put your configs
+1) Copy the `config.ini.sample` to `config.ini` and put your configs
 2) Run `php src/amiMonitor.php`
