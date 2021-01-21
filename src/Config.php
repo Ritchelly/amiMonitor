@@ -6,12 +6,20 @@ class Config {
 
 	public $asteriskManager = [];
 	public $websocketConfig = [];
+	protected $configFileName;
 
 	function __construct(){
+		$backLevel = 4;
+		$this->configFileName = "config.ini";
 
-		$config = parse_ini_file( dirname( __DIR__, 4 ) ."/config.ini", true);
-		$this->asteriskManager =  $config['AsteriskManager'];
-		$this->websocketConfig =  $config['WebSocket'];
+		if ( ! file_exists( dirname( __DIR__, $backLevel ) ."/". $this->configFileName ) ) {
+			$backLevel = 1;
+		} 
+		
+		$config = parse_ini_file( dirname( __DIR__, $backLevel ) ."/". $this->configFileName, true);
+		
+		$this->asteriskManager = $config['AsteriskManager'];
+		$this->websocketConfig = $config['WebSocket'];
 	}
    
 	public function getManagerConfig() {

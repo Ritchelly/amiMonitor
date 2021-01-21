@@ -2,7 +2,17 @@
 
 namespace App;
 
-include dirname( __DIR__, 3 ). '/autoload.php';
+$backLevel = 3;
+/*
+Checks if this code has in to vendor or not.
+If has downloaded by Composer, it is in to vendor folder.
+If has downloaded by GitHub, it is in base dir.
+*/
+if ( file_exists( dirname( __DIR__, $backLevel ). '/autoload.php' ) ) {
+	include dirname( __DIR__, $backLevel ). '/autoload.php';
+} else {
+	include dirname( __DIR__, 1 ). '/vendor/autoload.php';
+}
 
 set_time_limit(0);
 
