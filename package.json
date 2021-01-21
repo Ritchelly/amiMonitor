@@ -1,0 +1,25 @@
+{
+  "name": "amimonitor",
+  "version": "1.0.0",
+  "description": "This is a new colaboration of asterisk AMI with PHP.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ritchelly/amiMonitor.git"
+  },
+  "author": "Ritchelly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ritchelly/amiMonitor/issues"
+  },
+  "homepage": "https://github.com/Ritchelly/amiMonitor#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "socket.io": "^3.1.0"
+  }
+}
