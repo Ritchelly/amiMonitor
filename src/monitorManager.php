@@ -13,7 +13,7 @@ if ( file_exists( dirname( __DIR__, $backLevel ). '/autoload.php' ) ) {
 } else {
 	include dirname( __DIR__, 1 ). '/vendor/autoload.php';
 }
-
+$webSocket->emit( "ami", [ 'aaaaaaaa' ] );
 set_time_limit(0);
 
 $webSocket = new WebSocket();

@@ -5,7 +5,6 @@ var io = require('socket.io')(http);
 io.on('connection', function(socket){
     
     // When a user is connected
-    console.log('user connected');
     console.log(socket.id); 
         
     // When a user is disconnected
@@ -20,13 +19,13 @@ io.on('connection', function(socket){
     });
 
     //Example from custom status
-   /*  socket.on('agentStatus', function(data){
+    socket.on('agentStatus', function(data){
         console.log(data);
         console.log('Emiting agent status');
          io.emit('agentStatus',data[0]);
-     }); */
+     });
 }); 
  
-http.listen(3001, function(){
+http.listen(3000, function(){
     console.log('listening on *:3001');
 });
