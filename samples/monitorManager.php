@@ -3,11 +3,16 @@
 namespace App;
 
 include 'vendor/autoload.php';
+
+use App\WebSocket;
+use App\Ami;
+
 set_time_limit(0);
 
 $webSocket = new WebSocket();
 $ami = new Ami();
 
+//Filter some events or All;
 $event = [
 	'All',
 	/* 'AgentLogin',

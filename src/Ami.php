@@ -47,7 +47,6 @@ class Ami{
 		$event_separator     = false;
 		$filter              = [];
 
-		$ami_key_parent   = '';
 		$ami_value_parent = '';
 		$block_count      = 0;
 
