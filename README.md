@@ -6,7 +6,6 @@ This is a new colaboration of asterisk AMI with PHP.
 Help this project grow. Has many things to improve.
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?business=3RVCDHAF83R4A&currency_code=USD)
 
-
 # Instalation
 
 ## Via Composer just run `composer require ritch/ami-monitor` or clone this repository via Github.
@@ -22,7 +21,10 @@ but if you only read this code, mainly `monitorManager.php` or run `php monitorM
 # To Run
 
 1) If you want use web socket, run `node webSocketServer.js`, dont forget to put the configuration in `config.ini`.
-3) Run `php samples/amiMonitor.php` or make your self monitor file for example:
+2) Run `php samples/amiMonitor.php` or make your self monitor.
+3) Has a file `index.html` in samples folder, if you has using web socket, and all right, you'll start receive the events on your web page.
+
+#Custom File monitor example:
 
 ```php
 <?php 
