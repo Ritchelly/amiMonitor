@@ -21,7 +21,8 @@ but if you only read this code, mainly `monitorManager.php` or run `php monitorM
 # To Run
 
 1) If you want use web socket, run `node webSocketServer.js`, dont forget to put the configuration in `config.ini`.
-2) Run `php samples/amiMonitor.php` or make your self monitor.
+2) Copy samples to your base directory `cp -rf vendor/ritch/ami-monitor/samples .` or make your self monitor.
+3) Run `php samples/monitorManager.php`
 3) Has a file `index.html` in samples folder, if you has using web socket, and all right, you'll start receive the events on your web page.
 
 # Custom File monitor example:
