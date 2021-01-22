@@ -9,7 +9,9 @@ Help this project grow. Has many things to improve.
 # Instalation
 
 ## Via Composer just run `composer require ritch/ami-monitor` or clone this repository via Github.
+## Run `composer install` if you cloned the project by git directly
 ## Run `npm install`
+
 
 I Will improve this code and this explication, I swear, 
 but if you only read this code, mainly `monitorManager.php` or run `php monitorManager.php`, You can use.
