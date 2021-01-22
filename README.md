@@ -2,6 +2,11 @@
 
 This is a new colaboration of asterisk AMI with PHP. 
 
+#### Donate
+Help this project grow. Has many things to improve.
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?business=3RVCDHAF83R4A&currency_code=USD)
+
+
 # Instalation
 
 ## Via Composer just run `composer require ritch/ami-monitor` or clone this repository via Github.
@@ -71,3 +76,10 @@ while ( Utils::check_asterisk_status() );
 ?>
 
 ```
+
+# Donate
+Help this project grow. Has many things to improve.
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?business=3RVCDHAF83R4A&currency_code=USD)
+
+
