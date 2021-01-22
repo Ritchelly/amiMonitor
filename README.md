@@ -9,7 +9,7 @@ Help this project grow. Has many things to improve.
 # Instalation
 
 ## Via Composer just run `composer require ritch/ami-monitor` or clone this repository via Github.
-
+## Run `npm install`
 
 I Will improve this code and this explication, I swear, 
 but if you only read this code, mainly `monitorManager.php` or run `php monitorManager.php`, You can use.
@@ -24,7 +24,7 @@ but if you only read this code, mainly `monitorManager.php` or run `php monitorM
 2) Run `php samples/amiMonitor.php` or make your self monitor.
 3) Has a file `index.html` in samples folder, if you has using web socket, and all right, you'll start receive the events on your web page.
 
-#Custom File monitor example:
+# Custom File monitor example:
 
 ```php
 <?php 
